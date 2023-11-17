@@ -17,6 +17,7 @@
                 <h2><a href="">決定済みシフト</h2>
 
                 <h3><a href='/posts/create'>希望シフトはこちら</a></h3>
+                <h3><a href=''>シフト管理</a></h3>
                 
             </div>
         </div>
