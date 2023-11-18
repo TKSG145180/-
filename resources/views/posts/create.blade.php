@@ -9,9 +9,26 @@
         <h1>希望シフト</h1>
         <form action="/posts" method="POST">
             @csrf
-                <p><input type="date" name="shifts[date]" step="900"><strong>開始時刻</strong></p>
-            <p><input type="time" name="shifts[start_time]" step="900"><strong>開始時刻</strong></p>
-            <p><input type="time" name="shifts[end_time]" step="900"><strong>終了時刻</strong></p>
+            <div>
+                <h3>日付</h3>
+                <input type="date" name="shifts[date]" >
+                <p class="date_error" style="color:red">{{ $errors->first('shifts.date') }}</p>
+            </div>
+            
+            <div>
+                <h3>開始時間</h3>
+                <input type="time" name="shifts[start_time]" step="900">
+                 <p class="time_error" style="color:red">{{ $errors->first('shifts.start_time') }}</p>
+
+            </div>
+            
+            <div>
+                <h3>終了時刻</h3>
+                <input type="time" name="shifts[end_time]" step="900">
+                <p class="time_error" style="color:red">{{ $errors->first('shifts.end_time') }}</p>
+
+            </div>
+            
             <input type="submit" value="送信"/>
         </form>
         <div class="footer">
