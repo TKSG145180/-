@@ -14,4 +14,8 @@ class Shift extends Model
         'start_time',
         'end_time',
         ];
+        
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }
