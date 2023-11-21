@@ -28,11 +28,12 @@
                 <p class="time_error" style="color:red">{{ $errors->first('shifts.end_time') }}</p>
 
             </div>
-            
+        
+      
             <input type="submit" value="送信"/>
         </form>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/">ホームへ</a>
         </div>
     </body>
 </html>

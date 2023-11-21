@@ -8,19 +8,18 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-       <h1>希望シフト確認</h1>
+       <h1>希望シフト</h1>
         <form action="/posts" method="POST">
             <h3>日時</h3>
-            <p>{{ $shift->date }}</p>
+            <p>{{ $shift->shifts[date]  }}</p>
             <h3>開始時間</h3>
-            <p>{{ $shift->start_time }}</p>
+            <p>{{ $shift->shifts[start_time]  }}</p>
             <h3>終了時刻</h3>
-        　　 <p>{{ $shift->end_time }}</p>
+        　　 <p>{{ $shift->shifts[end_time]  }}</p>
 
         </form>
         <div class="footer">
-            <p><a href="/posts/create">シフト登録画面へ</a></p>
-            <p><a href="/">ホームへ</a></p>
+            <a href="/">戻る</a>
         </div>
     </body>
 </html>

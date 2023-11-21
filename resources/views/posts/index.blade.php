@@ -14,10 +14,10 @@
         <h4>※後半のシフトは5日まで、前半のシフトは20日まで</h4>
         <div class='posts'>
             <div class='post'>
-                <h2><a href="">決定済みシフト</h2>
+                <h2><a href="/posts/list">決定済みシフト</h2>
 
                 <h3><a href='/posts/create'>希望シフトはこちら</a></h3>
-                <h3><a href=''>シフト管理</a></h3>
+                <h3><a href='/posts/management'>シフト管理</a></h3>
                 
             </div>
         </div>

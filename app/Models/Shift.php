@@ -9,13 +9,14 @@ class Shift extends Model
 {
     use HasFactory;
       Protected $fillable = [
-         'user_id',
+        'user_id',
         'date',
         'start_time',
         'end_time',
         ];
         
+        
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }
