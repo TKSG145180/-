@@ -16,7 +16,9 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [Postcontroller::class, 'index'])->middleware('auth');
 Route::get('/posts/create', [PostController::class, 'create']);
-Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('/posts/management', [PostController::class, 'management']);
+Route::get('/posts/list',[PostController::class, 'list']);
+Route::get('/posts/{user}', [PostController::class, 'show']);
 Route::post('/posts', [PostController::class, 'store']);
 
 Route::get('/dashboard', function () {

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Shift;
+use App\Models\User;
 use App\Http\Requests\PostRequest;
 
 use DateTime;
@@ -19,16 +21,28 @@ class PostController extends Controller
    {
        return view('posts.create');
    }
-   public function show(Post $post)
+   public function show(Shift $shift)
    {
-       return view ('posts.show')->with(['post' => $post]);
+       return view('posts.show')->with(['shift' => $shift]);
    }
+      public function management()
+    {
+        return view('posts.management');
+    }
+    public function list()
+    {
+        return view('posts.list');
+    }
+
+
   public function store(PostRequest $request, Shift $shift)
   {
-      $input = $request['shifts'];
-      $input +=['user_id'=>1];
-      $shift->fill($input)->save();
-      return redirect('/');
+      $shift->user_id = \Auth::id();
+      $input_shift = $request['shifts'];
+      $shift->fill($input_shift);
+      $shift->save();
+      return redirect('/posts/{user}');
+   
   }
 }
 
