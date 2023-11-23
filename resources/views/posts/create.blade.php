@@ -9,25 +9,15 @@
         <h1>希望シフト</h1>
         <form action="/posts" method="POST">
             @csrf
+            <input type="month" name="month">
+            @for($i=1;$i<=31;$i++)
             <div>
-                <h3>日付</h3>
-                <input type="date" name="shifts[date]" >
-                <p class="date_error" style="color:red">{{ $errors->first('shifts.date') }}</p>
+                <div>{{ $i }}</div>
+                <input type="time" name="shifts[{{ $i }}][start_time]" step="900">
+                <input type="time" name="shifts[{{ $i }}][end_time]" step="900">
             </div>
-            
-            <div>
-                <h3>開始時間</h3>
-                <input type="time" name="shifts[start_time]" step="900">
-                 <p class="time_error" style="color:red">{{ $errors->first('shifts.start_time') }}</p>
-
-            </div>
-            
-            <div>
-                <h3>終了時刻</h3>
-                <input type="time" name="shifts[end_time]" step="900">
-                <p class="time_error" style="color:red">{{ $errors->first('shifts.end_time') }}</p>
-
-            </div>
+            @endfor
+           
         
       
             <input type="submit" value="送信"/>

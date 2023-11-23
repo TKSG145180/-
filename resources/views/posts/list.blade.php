@@ -1,25 +1,72 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
-       <h1>希望シフト</h1>
-        <form action="/posts" method="POST">
-            <h3>日時</h3>
-            <p>{{ $shift->shifts[date]  }}</p>
-            <h3>開始時間</h3>
-            <p>{{ $shift->shifts[start_time]  }}</p>
-            <h3>終了時刻</h3>
-        　　 <p>{{ $shift->shifts[end_time]  }}</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>2020 Calendar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+ <input type="month" name="month">
 
-        </form>
-        <div class="footer">
-            <a href="/">戻る</a>
-        </div>
-    </body>
+  <div class="calendar-container">
+    <h1>October 2020</h1>
+    <table class="calendar">
+      <tr>
+        <th>SUN</th>
+        <th>MON</th>
+        <th>TUE</th>
+        <th>WED</th>
+        <th>THU</th>
+        <th>FRI</th>
+        <th>SAT</th>
+      </tr>
+      <tr class="day">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr class="day">
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+      </tr>
+      <tr class="day">
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+      </tr>
+      <tr class="day">
+        <td>18</td>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+      </tr>
+      <tr class="day">
+        <td>25</td>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+        <td>29</td>
+        <td>30</td>
+        <td>31</td>
+      </tr>
+    </table>
+  </div>
+</body>
 </html>
