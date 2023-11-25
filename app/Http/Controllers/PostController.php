@@ -35,7 +35,7 @@ class PostController extends Controller
     {
         return view('posts.list');
     }
-
+  
 
   public function store(Request $request)
   {
@@ -56,5 +56,22 @@ class PostController extends Controller
       return redirect('/');
    
   }
+  
+    public function edit(Shift $shift)
+    {
+        return view('posts.edit')->with(['shift' => $shift]);
+    }
+    public function update(Request $request, Shift $shift)
+    {
+        $input_shift = $request['shift'];
+        $shift->fill($input_shift)->save();
+        return redirect('/posts/management');
+    }
+    public function delete(Shift $shift)
+    {
+        $shift->delete();
+        return redirect('/posts/management');
+    }
+
 }
 

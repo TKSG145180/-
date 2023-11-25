@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();
-            $table->string("user_id");
+            $table->foreignId('user_id')->constrained();
             $table->string("date");
             $table->string("start_time");
             $table->string("end_time");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

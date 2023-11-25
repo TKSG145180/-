@@ -20,6 +20,10 @@ Route::get('/posts/management', [PostController::class, 'management']);
 Route::get('/posts/list',[PostController::class, 'list']);
 Route::get('/posts/{shift}', [PostController::class, 'show']);
 Route::post('/posts', [PostController::class, 'store']);
+Route::put('/posts/{shift}', [PostController::class, 'update']);
+Route::delete('/posts/{shift}', [PostController::class,'delete']);
+Route::get('/posts/{shift}/edit', [PostController::class, 'edit']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
