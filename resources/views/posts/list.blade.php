@@ -2,71 +2,71 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>2020 Calendar</title>
+  <title>決定済みシフト</title>
   <link rel="stylesheet" href="style.css">
+ <style> 
+          table.st-tbl1{
+            width: 1000px;
+            /*見切れるように1000pxにしている*/
+        }
+        .st-tbl1 thead th {
+          /* 縦スクロール時を固定 */
+          position: sticky;
+          top: 0;
+          /* tbody内のセルより手前に表示する */
+          z-index: 1;
+        }
+        .st-tbl1 th:first-child {
+          /* 横スクロールを固定 */
+          position: sticky;
+          left: 0;
+          background: #f1f1fd;
+        }
+        .st-tbl1 thead th:first-child {
+          /* 一番左端のthead thが横スクロール時に隠れない様に */
+          z-index: 2;
+          background: #424242;
+        }
+        .st-tbl1 th,
+        .st-tbl1 td{
+          border-collapse: collapse;
+          text-align: left;
+          padding: .2rem .5rem;
+          font-weight: normal;
+        }
+        .st-tbl1 thead th {
+          background: #424242;
+          color: #E0E0E0;
+        }
+        .st-tbl1 thead th {
+          position: sticky;
+          top: 0;
+          z-index: 1;
+        }
+        .st-tbl1 th:first-child {
+          position: sticky;
+          left: 0;
+          background: #f1f1fd;
+        }
+</style>
 </head>
 <body>
-    
- <input type="month" name="month">
-
-  <div class="calendar-container">
-    <h1>October 2020</h1>
-    <table class="calendar">
-      <tr>
-        <th>SUN</th>
-        <th>MON</th>
-        <th>TUE</th>
-        <th>WED</th>
-        <th>THU</th>
-        <th>FRI</th>
-        <th>SAT</th>
-      </tr>
-      <tr class="day">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-      <tr class="day">
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td>10</td>
-      </tr>
-      <tr class="day">
-        <td>11</td>
-        <td>12</td>
-        <td>13</td>
-        <td>14</td>
-        <td>15</td>
-        <td>16</td>
-        <td>17</td>
-      </tr>
-      <tr class="day">
-        <td>18</td>
-        <td>19</td>
-        <td>20</td>
-        <td>21</td>
-        <td>22</td>
-        <td>23</td>
-        <td>24</td>
-      </tr>
-      <tr class="day">
-        <td>25</td>
-        <td>26</td>
-        <td>27</td>
-        <td>28</td>
-        <td>29</td>
-        <td>30</td>
-        <td>31</td>
-      </tr>
-    </table>
-  </div>
+   <table class="st-tbl1">
+    <thead>
+      <tr>
+        @for($i =1; $i<=31; $i++) 
+        <th>{{ $i }}</th>
+        @endfor
+    </thead>
+    <tbody>
+      <tr>
+        
+        <td>名前</td>
+        @foreach($all_lists as $user_lists)
+          <p>{{ $user_lists }}</p>
+        @endforeach
+      </tr>
+    </tbody>
+  </table>
+  
 </body>
-</html>

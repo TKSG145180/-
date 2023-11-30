@@ -15,9 +15,9 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'shifts.date' => 'required',
             'shifts.start_time' => 'required',
-            'shifts.end_time' => 'required'
+            'shifts.end_time' => 'required',
+            'month' => 'required'
         ];
     }
 }

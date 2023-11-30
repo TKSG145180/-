@@ -21,7 +21,7 @@
                 </form>
             </div>
         </body>
-           <div class="footer">
-            <a href="/">戻る</a>
-        </div>
+    <div class="footer">
+        <a href="/posts/management">戻る</a>
+    </div>
 </html> 

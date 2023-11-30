@@ -13,7 +13,16 @@
         th,td{
           border:1px black solid;
         }
-    </style>    
+        
+        .inline-block_shift {
+        display: inline-block;  
+        background-color:  #ccc;
+        }
+        
+    </style>   
+    
+    
+       
     </head>
     <body>
         <h1>希望シフト</h1>
@@ -40,13 +49,19 @@
     			        </tr>
                     </tbody>
                 </table>
-                <button type="/posts/list">承認</button>
-                <form action="/posts/{{ $shift->id }}" id="form_{{ $shift->id }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" onclick="deletePost({{ $shift->id }})">delete</button> 
-                </form>
-                <a href='/posts/{{$shift->id}}/edit'>変更</a>
+                <div class="inline-block_shift">
+                    <button onclick="location.href='/posts/list'">承認</button>
+                </div>
+                <div class="inline-block_shift">
+                    <form action="/posts/{{ $shift->id }}" id="form_{{ $shift->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{ $shift->id }})">削除</button> 
+                    </form>
+                </div>
+                <div class="inline-block_shift">
+                    <button onclick="location.href='/posts/{{$shift->id}}/edit'">変更</button>
+                </div>
                 @endforeach
              <script>
                 function deletePost(id) {
