@@ -50,7 +50,7 @@
                     </tbody>
                 </table>
                 <div class="inline-block_shift">
-                    <button onclick="location.href='/posts/list'">承認</button>
+                    <button onclick="location.href='/posts/management'">承認</button>
                 </div>
                 <div class="inline-block_shift">
                     <form action="/posts/{{ $shift->id }}" id="form_{{ $shift->id }}" method="post">

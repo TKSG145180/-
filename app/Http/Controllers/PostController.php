@@ -11,6 +11,7 @@ use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\DB;
 use App\Providers\AppServiceProcider;
 use DateTime;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -30,35 +31,54 @@ class PostController extends Controller
     {
         return view('posts.management')->with(['shifts' => $shift->getPaginateByLimit()]);
     }
-    public function list(Shift $shift,User $user)
+    public function list(Shift $shift)
     {
-        $shifts = $shift->where('user_id',Auth::id())->get();
-        // $all_list=[];
-        // $all_list=[
-        //     ['name'=>'田中','shift'=>[
-        //         '1'=>[
-        //             'start'=>'17','end'=>'21'
-        //             ]]]];
-        // $user_num=1;
-        // $month=2023-11- このような形で今月を取得する
-        // for($i=1;$i<=$user_num;$i++){
-        //     $user_list=['name'=>Auth::user()->name,'shift'=>[]];
-            $shift_list=[];
-            for($j=1;$j<=31;$j++){
-              $myshift=$shifts->where('date','2023-11-'.$j);
-               if($myshift){
-                   
-                $shift_list+=['start_time'=>$myshift[0]['start_time']];
-               }else{
-                   $shift_list+=[];
-               }
-            }
-            dd($shift_list);
-            // $user_list['shift']=$shift_list;
-            // $all_list+=$user_list;
+        // 今月と来月を取得
+        $currentMonth = Carbon::now()->month;
+        $currentYear = Carbon::now()->year;
+        $nextMonth =  Carbon::now()->addMonth()->month;
+        $nextYear =  Carbon::now()->addMonth()->year;
+        $days_num_list = [31, 28, 31, 30 ,31, 30, 31, 31, 30, 31, 30, 31];
+        $show_date = [];
+        $show_date["current_month"] = $currentMonth;
+        $show_date["next_month"] = $nextMonth;
+        $current_month_day_num = $days_num_list[$currentMonth-1];
+        $next_month_day_num = $days_num_list[$nextMonth-1];
 
-        return view('posts.list')->with(['all_lists' => $shift_list]);
-        
+        // シフトの表示
+        $shifts = $shift->where('user_id',Auth::id())->get();
+
+        // 今の月
+        $current_month_shift_list = [];
+        for($i=1;$i<=$current_month_day_num;$i++){
+            $current_month_shift_list[$i] = "なし";
+        };
+
+        for($i=1;$i<=$current_month_day_num;$i++){
+            $shift = $shifts->where('date', $currentYear.'-'.$currentMonth.'-'.$i)->first();
+            if($shift){
+                $shift_time['start_time'] = $shift->start_time;
+                $shift_time['end_time'] = $shift->end_time;
+                $current_month_shift_list[$i] = $shift_time;
+            };
+        }
+
+        // 次の月
+        $next_month_shift_list = [];
+        for($i=1;$i<=$next_month_day_num;$i++){
+            $next_month_shift_list[$i] = "なし";
+        };
+
+        for($i=1;$i<=$next_month_day_num;$i++){
+            $shift = $shifts->where('date', $nextYear.'-'.$nextMonth.'-'.$i)->first();
+            if($shift){
+                $shift_time['start_time'] = $shift->start_time;
+                $shift_time['end_time'] = $shift->end_time;
+                $next_month_shift_list[$i] = $shift_time;
+            };
+        }
+
+        return view('posts.list')->with(['show_date' => $show_date, 'current_month_shift_list' => $current_month_shift_list, 'next_month_shift_list' => $next_month_shift_list]);
     }
     public function password()
     {
